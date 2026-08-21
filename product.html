@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lampy | Product Details</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #f7f4ee;
+            color: #171513;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 104px;
+            width: 100%;
+            background: #171513;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5.5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 32px;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 38px;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            color: #fff;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.65;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-icons a {
+            color: #fff;
+            font-size: 21px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-icons a:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           PRODUCT SECTION
+        ========================= */
+
+        .product-page {
+            background: #f7f4ee;
+            padding: 80px 6% 110px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 12px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #8b847c;
+            margin-bottom: 55px;
+        }
+
+        .breadcrumb a {
+            color: #24211e;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .product-container {
+            max-width: 1380px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(380px, 0.92fr);
+            gap: 75px;
+            align-items: start;
+        }
+
+
+        /* =========================
+           PRODUCT IMAGE
+        ========================= */
+
+        .product-image {
+            width: 100%;
+            height: 680px;
+            overflow: hidden;
+            background: #e8e1d7;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+
+        /* =========================
+           PRODUCT INFORMATION
+        ========================= */
+
+        .product-info {
+            padding: 18px 0;
+            max-width: 600px;
+        }
+
+        .product-label {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #9a8068;
+            margin-bottom: 20px;
+        }
+
+        .product-info h1 {
+            font-family: "Playfair Display", serif;
+            font-weight: 400;
+            font-size: clamp(52px, 5vw, 78px);
+            line-height: 0.98;
+            letter-spacing: -2px;
+            margin-bottom: 28px;
+        }
+
+        .rating {
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .stars {
+            letter-spacing: 2px;
+        }
+
+        .price {
+            font-size: 26px;
+            font-weight: 500;
+            margin-bottom: 28px;
+        }
+
+        .description {
+            max-width: 510px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #625d57;
+            margin-bottom: 38px;
+        }
+
+
+        /* =========================
+           QUANTITY
+        ========================= */
+
+        .quantity-title {
+            font-size: 12px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .quantity-box {
+            width: 132px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            border: 1px solid #24211e;
+            margin-bottom: 24px;
+        }
+
+        .quantity-box button {
+            width: 42px;
+            height: 100%;
+            border: none;
+            background: transparent;
+            font-size: 19px;
+            cursor: pointer;
+            color: #171513;
+        }
+
+        .quantity-box button:hover {
+            background: #e9e4dc;
+        }
+
+        .quantity-box span {
+            flex: 1;
+            text-align: center;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .add-cart,
+        .wishlist-btn {
+            width: 100%;
+            height: 58px;
+            cursor: pointer;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .add-cart {
+            border: 1px solid #171513;
+            background: #171513;
+            color: #fff;
+        }
+
+        .add-cart:hover {
+            background: #3a3632;
+        }
+
+        .wishlist-btn {
+            margin-top: 12px;
+            border: 1px solid #77716a;
+            background: transparent;
+            color: #171513;
+        }
+
+        .wishlist-btn:hover {
+            background: #e9e4dc;
+        }
+
+
+        /* =========================
+           PRODUCT DETAILS
+        ========================= */
+
+        .product-details {
+            margin-top: 45px;
+            border-top: 1px solid #d5cec4;
+        }
+
+        .detail-row {
+            min-height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            border-bottom: 1px solid #d5cec4;
+            font-size: 14px;
+        }
+
+        .detail-row span:last-child {
+            color: #625d57;
+            text-align: right;
+        }
+
+
+        /* =========================
+           RELATED PRODUCTS
+        ========================= */
+
+        .related {
+            background: #11100f;
+            color: #fff;
+            padding: 105px 6% 115px;
+        }
+
+        .related-inner {
+            max-width: 1380px;
+            margin: 0 auto;
+        }
+
+        .related-label {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #b7aa9b;
+            margin-bottom: 20px;
+        }
+
+        .related h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(48px, 5vw, 70px);
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 55px;
+            letter-spacing: -1.5px;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .related-card {
+            background: #1c1a18;
+            overflow: hidden;
+            transition: transform 0.35s ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .related-card img {
+            width: 100%;
+            height: 390px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .related-card-content {
+            padding: 25px;
+        }
+
+        .related-card h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 26px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .related-card p {
+            color: #c9c2ba;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background: #f7f4ee;
+            color: #171513;
+            padding: 70px 6% 30px;
+        }
+
+        .footer-grid {
+            max-width: 1380px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+        }
+
+        .footer-brand h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 34px;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            color: #68615a;
+            line-height: 1.7;
+        }
+
+        .footer-column h4 {
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column a {
+            display: block;
+            font-size: 14px;
+            color: #625d57;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: #171513;
+        }
+
+        .footer-bottom {
+            max-width: 1380px;
+            margin: 55px auto 0;
+            padding-top: 22px;
+            border-top: 1px solid #d5cec4;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            font-size: 12px;
+            color: #77716a;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .product-image {
+                height: 600px;
+            }
+
+            .product-info {
+                max-width: 100%;
+            }
+
+            .description {
+                max-width: 700px;
+            }
+
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                height: auto;
+                min-height: 85px;
+                padding: 20px 5%;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .logo {
+                font-size: 27px;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 18px;
+                flex-wrap: wrap;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .nav-icons {
+                margin-left: auto;
+            }
+
+            .product-page {
+                padding: 50px 5% 70px;
+            }
+
+            .breadcrumb {
+                margin-bottom: 35px;
+                font-size: 10px;
+                gap: 10px;
+            }
+
+            .product-image {
+                height: 480px;
+            }
+
+            .product-info h1 {
+                font-size: 50px;
+                letter-spacing: -1px;
+            }
+
+            .related {
+                padding: 70px 5%;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .related-card img {
+                height: 350px;
+            }
+
+            .footer {
+                padding: 55px 5% 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                margin-top: 35px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            Lampy ✦
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="collections.html">Collections</a>
+            <a href="best-sellers.html">Best Sellers</a>
+            <a href="about.html">About Us</a>
+        </nav>
+
+        <div class="nav-icons">
+            <a href="#" aria-label="Search">⌕</a>
+            <a href="wishlist.html" aria-label="Wishlist">♡</a>
+            <a href="cart.html" aria-label="Cart">🛒</a>
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         PRODUCT
+    ========================= -->
+
+    <main class="product-page">
+
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="collections.html">Collections</a>
+            <span>/</span>
+            <span>Product</span>
+        </div>
+
+
+        <div class="product-container">
+
+            <!-- IMAGE -->
+
+            <div class="product-image">
+
+                <img
+                    src="images/products/beside-lamp.jpg"
+                    alt="Sculptural Table Lamp">
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div class="product-info">
+
+                <div class="product-label">
+                    Signature Collection
+                </div>
+
+                <h1>
+                    Sculptural<br>
+                    Table Lamp
+                </h1>
+
+                <div class="rating">
+                    <span class="stars">★★★★★</span>
+                    &nbsp; 4.9 (28 reviews)
+                </div>
+
+                <div class="price">
+                    ₹4,999
+                </div>
+
+                <p class="description">
+                    A beautifully sculpted table lamp designed to bring
+                    warmth, character and soft ambient light into your
+                    everyday space.
+                </p>
+
+
+                <!-- QUANTITY -->
+
+                <div class="quantity-title">
+                    Quantity
+                </div>
+
+                <div class="quantity-box">
+
+                    <button onclick="decreaseQty()">−</button>
+
+                    <span id="quantity">1</span>
+
+                    <button onclick="increaseQty()">+</button>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <button class="add-cart" onclick="addToCart()">
+                    Add to Cart
+                </button>
+
+                <button class="wishlist-btn" onclick="addWishlist()">
+                    ♡ &nbsp; Add to Wishlist
+                </button>
+
+
+                <!-- DETAILS -->
+
+                <div class="product-details">
+
+                    <div class="detail-row">
+                        <span>Material</span>
+                        <span>Ceramic</span>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Light Type</span>
+                        <span>Warm LED</span>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Color</span>
+                        <span>Warm White</span>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Delivery</span>
+                        <span>3–5 Business Days</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         RELATED PRODUCTS
+    ========================= -->
+
+    <section class="related">
+
+        <div class="related-inner">
+
+            <div class="related-label">
+                YOU MAY ALSO LIKE
+            </div>
+
+            <h2>
+                More beautiful lights.
+            </h2>
+
+            <div class="related-grid">
+
+
+                <a href="product.html" class="related-card">
+
+                    <img
+                        src="images/products/decor-lamp.jpg"
+                        alt="Modern Table Lamp">
+
+                    <div class="related-card-content">
+
+                        <h3>
+                            Modern Table Lamp
+                        </h3>
+
+                        <p>
+                            ₹3,499
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a href="product.html" class="related-card">
+
+                    <img
+                        src="images/products/designer-lamp.jpg"
+                        alt="Minimal Floor Lamp">
+
+                    <div class="related-card-content">
+
+                        <h3>
+                            Minimal Floor Lamp
+                        </h3>
+
+                        <p>
+                            ₹6,999
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a href="product.html" class="related-card">
+
+                    <img
+                        src="images/products/floor-lamp.jpg"
+                        alt="Elegant Pendant Lamp">
+
+                    <div class="related-card-content">
+
+                        <h3>
+                            Elegant Pendant Lamp
+                        </h3>
+
+                        <p>
+                            ₹5,499
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+                <h2>
+                    Lampy ✦
+                </h2>
+
+                <p>
+                    Light that makes<br>
+                    your space feel like home.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>EXPLORE</h4>
+
+                <a href="index.html">Home</a>
+                <a href="collections.html">Collections</a>
+                <a href="best-sellers.html">Best Sellers</a>
+                <a href="about.html">About Us</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>HELP</h4>
+
+                <a href="#">Contact</a>
+                <a href="#">Shipping</a>
+                <a href="#">Returns</a>
+                <a href="#">FAQ</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>FOLLOW</h4>
+
+                <a href="#">Instagram</a>
+                <a href="#">Pinterest</a>
+                <a href="#">YouTube</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 Lampy. All rights reserved.
+            </span>
+
+            <span>
+                LIGHT · DESIGN · LIVING
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        let quantity = 1;
+
+        function increaseQty() {
+
+            quantity++;
+
+            document.getElementById("quantity").innerText = quantity;
+
+        }
+
+
+        function decreaseQty() {
+
+            if (quantity > 1) {
+
+                quantity--;
+
+            }
+
+            document.getElementById("quantity").innerText = quantity;
+
+        }
+
+
+        function addToCart() {
+
+            alert("Product added to cart!");
+
+        }
+
+
+        function addWishlist() {
+
+            alert("Product added to wishlist!");
+
+        }
+
+    </script>
+
+</body>
+</html>

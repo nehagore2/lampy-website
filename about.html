@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Lampy</title>
+
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #f7f4ee;
+            color: #171513;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+/* ================= HEADER ================= */
+
+.navbar,
+header {
+    height: 78px;
+    padding: 0 5%;
+    box-sizing: border-box;
+    background: #171513;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin: 0;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    font-weight: 400;
+    line-height: -1;
+}
+
+.logo span,
+.logo small {
+    font-size: 12px;
+     margin-left: 4px;
+}
+
+.nav-links,
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a,
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    line-height: 1;
+}
+.nav-links a:hover {
+    opacity: 1;
+}
+
+.nav-icons,
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-icons a,
+.header-icons a {
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 1px solid #0d0d0d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f5eee4;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 1;
+}
+  /* =========================================
+   ABOUT PAGE HERO
+========================================= */
+
+.about-hero {
+    min-height: calc(105vh - 102px);
+    background-image: url("../images/hero-lamp1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+
+    padding: 70px 8%;
+    color: #f5eee4;
+}
+
+        .about-hero-content {
+            max-width: 1050px;
+        }
+
+        .about-hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(65px, 8vw, 125px);
+            font-weight: 400;
+            line-height: 0.94;
+            letter-spacing: -3px;
+            margin: 25px 0 30px;
+        }
+
+        .about-hero-content > p:last-child {
+            max-width: 700px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #f5eee4;
+        }
+
+
+        /* =========================
+           STORY
+        ========================= */
+
+        .about-story {
+            max-width: 1400px;
+            margin: 0 auto;
+
+            padding: 120px 6%;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 90px;
+
+            align-items: center;
+        }
+
+        .about-story-image {
+            width: 100%;
+            height: 650px;
+            overflow: hidden;
+        }
+
+        .about-story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-story-content {
+            max-width: 570px;
+        }
+
+        .about-story-content h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(55px, 6vw, 85px);
+            font-weight: 400;
+            line-height: 0.98;
+            letter-spacing: -2px;
+            margin: 25px 0 35px;
+        }
+
+        .about-story-content p:not(.small-heading) {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #625d57;
+            margin-bottom: 22px;
+        }
+
+
+        /* =========================
+           VALUES
+        ========================= */
+
+        .about-values {
+            background: #11100f;
+            color: #fff;
+
+            padding: 120px 6%;
+        }
+
+        .section-heading {
+            max-width: 1400px;
+            margin: 0 auto 75px;
+        }
+
+        .section-heading > p {
+            color: #b5a99a;
+            font-size: 12px;
+            letter-spacing: 3px;
+        }
+
+        .section-heading h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(55px, 7vw, 100px);
+            font-weight: 400;
+            line-height: 0.95;
+            letter-spacing: -2px;
+            margin-top: 25px;
+        }
+
+        .values-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .value-card {
+            border-top: 1px solid #4a4642;
+            padding: 30px 10px 20px;
+        }
+
+        .value-card > span {
+            display: block;
+            color: #a89b8d;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+        }
+
+        .value-card h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 31px;
+            font-weight: 400;
+            margin-bottom: 18px;
+        }
+
+        .value-card p {
+            max-width: 340px;
+            color: #bdb7b0;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .about-cta {
+            text-align: center;
+            padding: 150px 6%;
+
+            background: #f7f4ee;
+        }
+
+        .about-cta .small-heading {
+            margin-bottom: 25px;
+        }
+
+        .about-cta h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(60px, 8vw, 115px);
+            font-weight: 400;
+            line-height: 0.95;
+            letter-spacing: -3px;
+            margin-bottom: 45px;
+        }
+
+        .feature-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 17px 30px;
+
+            background: #171513;
+            color: #fff;
+
+            font-size: 12px;
+            letter-spacing: 2px;
+
+            transition: all 0.3s ease;
+        }
+
+        .feature-button:hover {
+            background: #3a3632;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background: #171513;
+            color: #fff;
+            padding: 75px 6% 30px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+        }
+
+        .footer-brand h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 35px;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            color: #aaa39c;
+            line-height: 1.7;
+        }
+
+        .footer-column h4 {
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #aaa39c;
+            font-size: 14px;
+            margin-bottom: 12px;
+
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 55px auto 0;
+
+            padding-top: 22px;
+
+            border-top: 1px solid #3d3935;
+
+            display: flex;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: #8e8882;
+
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .about-story {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .about-story-image {
+                height: 550px;
+            }
+
+            .about-story-content {
+                max-width: 800px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 20px 5%;
+                min-height: 85px;
+
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .logo a {
+                font-size: 27px;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+
+                justify-content: center;
+                flex-wrap: wrap;
+
+                gap: 18px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .nav-icons {
+                margin-left: auto;
+            }
+
+
+            .about-hero {
+                min-height: 600px;
+                padding: 90px 5%;
+            }
+
+            .about-hero h1 {
+                font-size: 58px;
+                letter-spacing: -1.5px;
+            }
+
+            .about-hero-content > p:last-child {
+                font-size: 16px;
+            }
+
+
+            .about-story {
+                padding: 80px 5%;
+            }
+
+            .about-story-image {
+                height: 430px;
+            }
+
+            .about-story-content h2 {
+                font-size: 55px;
+            }
+
+
+            .about-values {
+                padding: 80px 5%;
+            }
+
+            .section-heading {
+                margin-bottom: 55px;
+            }
+
+            .section-heading h2 {
+                font-size: 55px;
+            }
+
+
+            .about-cta {
+                padding: 100px 5%;
+            }
+
+            .about-cta h2 {
+                font-size: 58px;
+                letter-spacing: -1px;
+            }
+
+
+            .footer {
+                padding: 60px 5% 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                margin-top: 35px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        Lampy <small>✦</small>
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="collections.html">
+            Collections
+        </a>
+
+        <a href="best-sellers.html">
+            Best Sellers
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+    </nav>
+
+    <div class="nav-icons">
+
+        <a href="wishlist.html" aria-label="Wishlist">
+            ♡
+        </a>
+
+        <a href="cart.html" aria-label="Cart">
+            🛒
+        </a>
+
+    </div>
+
+</header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="about-hero">
+
+        <div class="about-hero-content">
+
+            <p class="small-heading">
+                OUR STORY
+            </p>
+
+            <h1>
+                Light that<br>
+                feels like home.
+            </h1>
+
+            <p>
+                At Lampy, we believe lighting is more than
+                illumination. It is warmth, atmosphere and
+                personality brought into your space.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         STORY
+    ========================= -->
+
+    <section class="about-story">
+
+
+        <div class="about-story-image">
+
+            <img
+                src="images/collections/featured-lamp.jpg"
+                alt="Lampy lighting">
+
+        </div>
+
+
+        <div class="about-story-content">
+
+            <p class="small-heading">
+                LIGHT • DESIGN • LIVING
+            </p>
+
+            <h2>
+                Designed with<br>
+                intention.
+            </h2>
+
+            <p>
+                Lampy was created with a simple idea —
+                beautiful lighting should make everyday
+                spaces feel special.
+            </p>
+
+            <p>
+                From soft bedside lamps to statement pieces,
+                every design is carefully selected to bring
+                character, comfort and warmth into your home.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         VALUES
+    ========================= -->
+
+    <section class="about-values">
+
+        <div class="section-heading">
+
+            <p>
+                WHAT WE BELIEVE
+            </p>
+
+            <h2>
+                Simple ideas.<br>
+                Beautiful spaces.
+            </h2>
+
+        </div>
+
+
+        <div class="values-grid">
+
+
+            <div class="value-card">
+
+                <span>
+                    01
+                </span>
+
+                <h3>
+                    Thoughtful Design
+                </h3>
+
+                <p>
+                    Every piece is chosen to balance beauty,
+                    function and timeless style.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <span>
+                    02
+                </span>
+
+                <h3>
+                    Warmth
+                </h3>
+
+                <p>
+                    We create lighting that makes your
+                    everyday surroundings feel welcoming.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <span>
+                    03
+                </span>
+
+                <h3>
+                    Timeless Style
+                </h3>
+
+                <p>
+                    Designs made to complement your space
+                    today and for years to come.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section class="about-cta">
+
+        <p class="small-heading">
+            FIND YOUR LIGHT
+        </p>
+
+        <h2>
+            Make your space<br>
+            glow beautifully.
+        </h2>
+
+        <a
+            href="collections.html"
+            class="feature-button">
+
+            EXPLORE COLLECTIONS →
+
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+                <h2>
+                    Lampy ✦
+                </h2>
+
+                <p>
+                    Light that makes<br>
+                    your space feel like home.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    EXPLORE
+                </h4>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="collections.html">
+                    Collections
+                </a>
+
+                <a href="best-sellers.html">
+                    Best Sellers
+                </a>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    HELP
+                </h4>
+
+                <a href="#">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Shipping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+                <a href="#">
+                    FAQ
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    FOLLOW
+                </h4>
+
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    Pinterest
+                </a>
+
+                <a href="#">
+                    YouTube
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 Lampy. All rights reserved.
+            </span>
+
+            <span>
+                LIGHT · DESIGN · LIVING
+            </span>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>

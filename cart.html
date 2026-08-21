@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cart | Lampy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f1ea;
+            color: #151413;
+            font-family: "DM Sans", sans-serif;
+        }
+
+/* ================= HEADER ================= */
+
+/* ================= HEADER ================= */
+
+.navbar,
+header {
+    height: 78px;
+    padding: 0 5%;
+    box-sizing: border-box;
+    background: #171513;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin: 0;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    font-weight: 400;
+    line-height: -1;
+}
+
+.logo span,
+.logo small {
+    font-size: 12px;
+     margin-left: 4px;
+}
+
+.nav-links,
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a,
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    line-height: 1;
+}
+.nav-links a:hover {
+    opacity: 1;
+}
+
+.nav-icons,
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-icons a,
+.header-icons a {
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 1px solid #0d0d0d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f5eee4;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 1;
+}
+        /* ================= PRODUCTS ================= */
+
+        .cart-items {
+            border-top: 1px solid #cfc8bd;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 150px 1fr auto;
+            gap: 30px;
+            padding: 30px 0;
+            border-bottom: 1px solid #cfc8bd;
+            align-items: center;
+        }
+
+        .cart-item img {
+            width: 150px;
+            height: 170px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .item-info h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .item-info p {
+            color: #6f685f;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .item-price {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* ================= QUANTITY ================= */
+
+        .quantity {
+            display: flex;
+            width: 125px;
+            height: 42px;
+            border: 1px solid #aaa198;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .quantity button {
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            cursor: pointer;
+            width: 38px;
+            height: 100%;
+        }
+
+        .quantity span {
+            font-size: 15px;
+        }
+
+        /* ================= REMOVE ================= */
+
+        .remove-btn {
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: #777;
+            font-size: 13px;
+            text-decoration: underline;
+            margin-top: 18px;
+        }
+
+        .remove-btn:hover {
+            color: #111;
+        }
+
+        /* ================= SUMMARY ================= */
+
+        .summary {
+            background: #e9e3da;
+            padding: 40px;
+            position: sticky;
+            top: 30px;
+        }
+
+        .summary h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 38px;
+            font-weight: 400;
+            margin-bottom: 35px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #c7c0b6;
+            font-size: 15px;
+        }
+
+        .summary-row.total {
+            border-bottom: none;
+            padding-top: 25px;
+            font-size: 21px;
+            font-weight: 500;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            border: none;
+            background: #151413;
+            color: white;
+            padding: 19px;
+            margin-top: 25px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #33302d;
+        }
+
+        .continue {
+            display: block;
+            text-align: center;
+            color: #151413;
+            margin-top: 22px;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        /* ================= EMPTY CART ================= */
+
+        .empty-cart {
+            display: none;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .empty-cart h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 50px;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .empty-cart p {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            background: #151413;
+            color: white;
+            text-decoration: none;
+            padding: 17px 35px;
+            letter-spacing: 1px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #151413;
+            color: white;
+            padding: 70px 7% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 70px;
+        }
+
+        .footer-logo {
+            font-family: "Playfair Display", serif;
+            font-size: 38px;
+            margin-bottom: 18px;
+        }
+
+        .footer-about {
+            color: #bcb6af;
+            line-height: 1.7;
+            max-width: 280px;
+        }
+
+        footer h3 {
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        footer a {
+            display: block;
+            color: #bcb6af;
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #3b3937;
+            padding-top: 25px;
+            color: #999;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            header {
+                height: auto;
+                padding: 25px 5%;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 25px;
+            }
+
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+
+            .summary {
+                position: static;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .page-title {
+                padding: 60px 6% 40px;
+            }
+
+            .page-title h1 {
+                font-size: 60px;
+            }
+
+            .cart-container {
+                width: 88%;
+            }
+
+            .cart-item {
+                grid-template-columns: 95px 1fr;
+                gap: 18px;
+            }
+
+            .cart-item img {
+                width: 95px;
+                height: 120px;
+            }
+
+            .item-actions {
+                grid-column: 2;
+            }
+
+            .summary {
+                padding: 28px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .copyright {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+   <!-- ================= HEADER ================= -->
+
+<header>
+
+    <a href="index.html" class="logo">
+        Lampy <span>✦</span>
+    </a>
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="collections.html">
+            Collections
+        </a>
+
+        <a href="best-sellers.html">
+            Best Sellers
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+    </nav>
+
+    <div class="header-icons">
+
+        <a href="wishlist.html" title="Wishlist">
+            ♡
+        </a>
+
+        <a href="cart.html" title="Cart">
+            🛒
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= TITLE ================= -->
+
+<section class="page-title">
+
+    <div class="small-title">YOUR SELECTION</div>
+
+    <h1>Your Cart.</h1>
+
+</section>
+
+
+<!-- ================= CART ================= -->
+
+<div class="cart-container">
+
+    <!-- CART PRODUCTS -->
+
+    <div class="cart-items" id="cartItems">
+
+        <!-- PRODUCT 1 -->
+
+        <div class="cart-item" data-price="4999">
+
+            <img src="images/lamp-1.jpg" alt="Sculptural Table Lamp">
+
+            <div class="item-info">
+
+                <h2>Sculptural Table Lamp</h2>
+
+                <p>Warm LED · Ceramic</p>
+
+                <div class="item-price">₹4,999</div>
+
+                <div class="quantity">
+
+                    <button onclick="changeQuantity(this, -1)">−</button>
+
+                    <span>1</span>
+
+                    <button onclick="changeQuantity(this, 1)">+</button>
+
+                </div>
+
+            </div>
+
+            <div class="item-actions">
+
+                <button class="remove-btn" onclick="removeItem(this)">
+                    Remove
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="cart-item" data-price="3499">
+
+            <img src="images/table-lamp.jpg" alt="Modern Table Lamp">
+
+            <div class="item-info">
+
+                <h2>Modern Table Lamp</h2>
+
+                <p>Soft Ambient Light · Stone</p>
+
+                <div class="item-price">₹3,499</div>
+
+                <div class="quantity">
+
+                    <button onclick="changeQuantity(this, -1)">−</button>
+
+                    <span>1</span>
+
+                    <button onclick="changeQuantity(this, 1)">+</button>
+
+                </div>
+
+            </div>
+
+            <div class="item-actions">
+
+                <button class="remove-btn" onclick="removeItem(this)">
+                    Remove
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ================= SUMMARY ================= -->
+
+    <aside class="summary">
+
+        <h2>Order Summary</h2>
+
+        <div class="summary-row">
+
+            <span>Subtotal</span>
+
+            <span id="subtotal">₹8,498</span>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span>Delivery</span>
+
+            <span id="delivery">Free</span>
+
+        </div>
+
+        <div class="summary-row total">
+
+            <span>Total</span>
+
+            <span id="total">₹8,498</span>
+
+        </div>
+
+        <button class="checkout-btn" onclick="checkout()">
+            PROCEED TO CHECKOUT
+        </button>
+
+        <a href="collections.html" class="continue">
+            Continue Shopping
+        </a>
+
+    </aside>
+
+</div>
+
+
+<!-- ================= EMPTY CART ================= -->
+
+<div class="empty-cart" id="emptyCart">
+
+    <h2>Your cart is empty.</h2>
+
+    <p>Discover beautiful lighting for your space.</p>
+
+    <a href="collections.html" class="shop-btn">
+        SHOP COLLECTION
+    </a>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <div class="footer-logo">
+                Lampy ✦
+            </div>
+
+            <p class="footer-about">
+                Light that makes your space feel like home.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>EXPLORE</h3>
+
+            <a href="index.html">Home</a>
+            <a href="collections.html">Collections</a>
+            <a href="best-sellers.html">Best Sellers</a>
+            <a href="about.html">About Us</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>HELP</h3>
+
+            <a href="#">Contact</a>
+            <a href="#">Shipping</a>
+            <a href="#">Returns</a>
+            <a href="#">FAQ</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>FOLLOW</h3>
+
+            <a href="#">Instagram</a>
+            <a href="#">Pinterest</a>
+            <a href="#">YouTube</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        <span>© 2026 Lampy. All rights reserved.</span>
+
+        <span>LIGHT · DESIGN · LIVING</span>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    function changeQuantity(button, change) {
+
+        const quantityBox = button.parentElement;
+        const quantityText = quantityBox.querySelector("span");
+
+        let quantity = parseInt(quantityText.textContent);
+
+        quantity += change;
+
+        if (quantity < 1) {
+            quantity = 1;
+        }
+
+        quantityText.textContent = quantity;
+
+        updateTotal();
+    }
+
+
+    function removeItem(button) {
+
+        const item = button.closest(".cart-item");
+
+        item.remove();
+
+        updateTotal();
+
+        const remainingItems =
+            document.querySelectorAll(".cart-item");
+
+        if (remainingItems.length === 0) {
+
+            document.querySelector(".cart-container").style.display = "none";
+
+            document.querySelector(".page-title").style.display = "none";
+
+            document.getElementById("emptyCart").style.display = "block";
+        }
+    }
+
+
+    function updateTotal() {
+
+        const items =
+            document.querySelectorAll(".cart-item");
+
+        let subtotal = 0;
+
+        items.forEach(function(item) {
+
+            const price =
+                parseInt(item.dataset.price);
+
+            const quantity =
+                parseInt(
+                    item.querySelector(".quantity span").textContent
+                );
+
+            subtotal += price * quantity;
+
+        });
+
+
+        document.getElementById("subtotal").textContent =
+            "₹" + subtotal.toLocaleString("en-IN");
+
+        document.getElementById("total").textContent =
+            "₹" + subtotal.toLocaleString("en-IN");
+
+    }
+
+
+    function checkout() {
+
+        alert(
+            "Thank you for shopping with Lampy! Checkout will be available soon."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

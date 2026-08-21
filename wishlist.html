@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wishlist | Lampy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f1ea;
+            color: #151413;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        /* ================= HEADER ================= */
+
+/* ================= HEADER ================= */
+
+.navbar,
+header {
+    height: 78px;
+    padding: 0 5%;
+    box-sizing: border-box;
+    background: #171513;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin: 0;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    font-weight: 400;
+    line-height: -1;
+}
+
+.logo span,
+.logo small {
+    font-size: 12px;
+     margin-left: 4px;
+}
+
+.nav-links,
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a,
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    line-height: 1;
+}
+.nav-links a:hover {
+    opacity: 1;
+}
+
+.nav-icons,
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-icons a,
+.header-icons a {
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 1px solid #0d0d0d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f5eee4;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 1;
+}
+
+        /* PAGE TITLE */
+
+        .page-title {
+            padding: 90px 7% 60px;
+        }
+
+        .small-title {
+            color: #9b8b78;
+            font-size: 13px;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        .page-title h1 {
+            font-family: "Playfair Display", serif;
+            font-weight: 400;
+            font-size: clamp(55px, 8vw, 105px);
+            line-height: 0.95;
+        }
+
+        /* WISHLIST */
+
+        .wishlist-container {
+            width: 86%;
+            margin: 0 auto 120px;
+        }
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 5fr);
+            gap: 32px;
+        }
+
+        .wishlist-card {
+            background: #1b1918;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wishlist-card img {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .wishlist-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            font-size: 17px;
+            color: #ddd5ca;
+        }
+
+        /* HEART */
+
+        .heart-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            color: #151413;
+            font-size: 23px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        /* BUTTON */
+
+        .card-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .add-cart {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            background: white;
+            color: #151413;
+            cursor: pointer;
+            letter-spacing: 1px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .add-cart:hover {
+            background: #ddd8d0;
+        }
+
+        .view-product {
+            flex: 1;
+            padding: 13px;
+            border: 1px solid #77716b;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .view-product:hover {
+            border-color: white;
+        }
+
+        /* EMPTY WISHLIST */
+
+        .empty-wishlist {
+            display: none;
+            text-align: center;
+            padding: 80px 20px 120px;
+        }
+
+        .empty-wishlist h2 {
+            font-family: "Playfair Display", serif;
+            font-weight: 400;
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .empty-wishlist p {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            background: #151413;
+            color: white;
+            text-decoration: none;
+            padding: 17px 35px;
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #151413;
+            color: white;
+            padding: 70px 7% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 70px;
+        }
+
+        .footer-logo {
+            font-family: "Playfair Display", serif;
+            font-size: 38px;
+            margin-bottom: 18px;
+        }
+
+        .footer-about {
+            color: #bcb6af;
+            line-height: 1.7;
+            max-width: 280px;
+        }
+
+        footer h3 {
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        footer a {
+            display: block;
+            color: #bcb6af;
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #3b3937;
+            padding-top: 25px;
+            color: #999;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            header {
+                height: auto;
+                padding: 25px 5%;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 25px;
+            }
+
+            .wishlist-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .page-title {
+                padding: 60px 6% 40px;
+            }
+
+            .page-title h1 {
+                font-size: 60px;
+            }
+
+            .wishlist-container {
+                width: 88%;
+            }
+
+            .wishlist-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wishlist-card img {
+                height: 400px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .copyright {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+<header>
+
+    <a href="index.html" class="logo">
+        Lampy <span>✦</span>
+    </a>
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="collections.html">
+            Collections
+        </a>
+
+        <a href="best-sellers.html">
+            Best Sellers
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+    </nav>
+
+    <div class="header-icons">
+
+        <a href="wishlist.html" title="Wishlist">
+            ♡
+        </a>
+
+        <a href="cart.html" title="Cart">
+            🛒
+        </a>
+
+    </div>
+
+</header>
+
+
+    <!-- PAGE TITLE -->
+
+    <section class="page-title">
+
+        <div class="small-title">
+            SAVED FOR LATER
+        </div>
+
+        <h1>Your Wishlist.</h1>
+
+    </section>
+
+
+    <!-- WISHLIST -->
+
+    <section class="wishlist-container" id="wishlistContainer">
+
+        <div class="wishlist-grid" id="wishlistGrid">
+
+
+            <!-- PRODUCT 1 -->
+
+            <div class="wishlist-card">
+
+                <button class="heart-btn" onclick="removeWishlist(this)">
+                    ♥
+                </button>
+
+                <img
+                    src="images/floor-1.jpg"
+                    alt="Sculptural Table Lamp"
+                >
+
+                <div class="card-content">
+
+                    <h2>Sculptural Table Lamp</h2>
+
+                    <div class="price">
+                        ₹4,999
+                    </div>
+
+                    <div class="card-actions">
+
+                        <button
+                            class="add-cart"
+                            onclick="addToCart('Sculptural Table Lamp')"
+                        >
+                            ADD TO CART
+                        </button>
+
+                        <a
+                            href="product.html"
+                            class="view-product"
+                        >
+                            VIEW
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+
+            <div class="wishlist-card">
+
+                <button class="heart-btn" onclick="removeWishlist(this)">
+                    ♥
+                </button>
+
+                <img
+                    src="images/floor-2.jpg"
+                    alt="Modern Table Lamp"
+                >
+
+                <div class="card-content">
+
+                    <h2>Modern Table Lamp</h2>
+
+                    <div class="price">
+                        ₹3,499
+                    </div>
+
+                    <div class="card-actions">
+
+                        <button
+                            class="add-cart"
+                            onclick="addToCart('Modern Table Lamp')"
+                        >
+                            ADD TO CART
+                        </button>
+
+                        <a
+                            href="product.html"
+                            class="view-product"
+                        >
+                            VIEW
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+
+            <div class="wishlist-card">
+
+                <button class="heart-btn" onclick="removeWishlist(this)">
+                    ♥
+                </button>
+
+                <img
+                    src="images/lamp-3.jpg"
+                    alt="Minimal Floor Lamp"
+                >
+
+                <div class="card-content">
+
+                    <h2>Minimal Floor Lamp</h2>
+
+                    <div class="price">
+                        ₹6,999
+                    </div>
+
+                    <div class="card-actions">
+
+                        <button
+                            class="add-cart"
+                            onclick="addToCart('Minimal Floor Lamp')"
+                        >
+                            ADD TO CART
+                        </button>
+
+                        <a
+                            href="product.html"
+                            class="view-product"
+                        >
+                            VIEW
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- EMPTY WISHLIST -->
+
+    <section class="empty-wishlist" id="emptyWishlist">
+
+        <h2>Your wishlist is empty.</h2>
+
+        <p>
+            Save your favourite lights and come back to them later.
+        </p>
+
+        <a href="collections.html" class="shop-btn">
+            EXPLORE COLLECTION
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-grid">
+
+            <div>
+
+                <div class="footer-logo">
+                    Lampy ✦
+                </div>
+
+                <p class="footer-about">
+                    Light that makes your space feel like home.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>EXPLORE</h3>
+
+                <a href="index.html">Home</a>
+                <a href="collections.html">Collections</a>
+                <a href="best-sellers.html">Best Sellers</a>
+                <a href="about.html">About Us</a>
+
+            </div>
+
+
+            <div>
+
+                <h3>HELP</h3>
+
+                <a href="#">Contact</a>
+                <a href="#">Shipping</a>
+                <a href="#">Returns</a>
+                <a href="#">FAQ</a>
+
+            </div>
+
+
+            <div>
+
+                <h3>FOLLOW</h3>
+
+                <a href="#">Instagram</a>
+                <a href="#">Pinterest</a>
+                <a href="#">YouTube</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            <span>
+                © 2026 Lampy. All rights reserved.
+            </span>
+
+            <span>
+                LIGHT · DESIGN · LIVING
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function removeWishlist(button) {
+
+            const card = button.closest(".wishlist-card");
+
+            card.remove();
+
+            const cards =
+                document.querySelectorAll(".wishlist-card");
+
+            if (cards.length === 0) {
+
+                document.getElementById("wishlistContainer").style.display = "none";
+
+                document.querySelector(".page-title").style.display = "none";
+
+                document.getElementById("emptyWishlist").style.display = "block";
+
+            }
+
+        }
+
+
+        function addToCart(productName) {
+
+            alert(
+                productName + " has been added to your cart."
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
